@@ -123,21 +123,11 @@ namespace HetaoSensor {
     //% blockId=hetao_sonar_temperature block="读取人体摄氏温度"
     //% group="红外测温模块"
     export function readTemperature(): number {
-        if(!PWMInited)
+        if (!PWMInited)
             return 0
         return 280 * (HIGH / (HIGH + LOW) - 0.125) - 20
     }
 
-
-/**
- * pins.i2c_write_number(68, 11270, NumberFormat.UINT16_BE, True)
-    basic.pause(10)
-    buf = pins.i2c_read_buffer(0x44, 6)
-    temp = buf[0] * 256 + buf[1]
-    hum = buf[3] * 256 + buf[4]
-    temp = temp / 65535 * 175 - 45
-    hum = hum * 100 / 65535
- */
     //% blockId=hetao_sonar_temperature_humidity block="读取引脚 %pin| %attr|"
     //% group="温湿度传感器"
     export function readTemperatureAndHumiditySensor(pin: DigitalPin, attr: HetaoTemperatureHumidity) {
@@ -146,7 +136,9 @@ namespace HetaoSensor {
         let buf = pins.i2cReadBuffer(0x44, 6)
         let temperature = buf[0] * 256 + buf[1]
         let humidity = buf[3] * 256 + buf[4]
-        switch(attr){
+        temperature = temperature / 65535 * 175 - 45
+        humidity = humidity * 100 / 65535
+        switch (attr) {
             case HetaoTemperatureHumidity.temperature:
                 return temperature
             case HetaoTemperatureHumidity.humidity:
