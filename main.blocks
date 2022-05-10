@@ -1,1 +1,1 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><block type="device_forever" id="T(*7uD+5[P`cnX.+E-z=" x="0" y="0"/><block type="hetao_sonar_temperature_humidity" id="A#*u_@O$fE*G_J{c`7#." disabled="true" x="377" y="603"><field name="attr">HetaoTemperatureHumidity.temperature</field></block></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="device_forever" id="T(*7uD+5[P`cnX.+E-z=" x="0" y="0"/></xml>
