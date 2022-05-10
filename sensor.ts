@@ -128,9 +128,9 @@ namespace HetaoSensor {
         return 280 * (HIGH / (HIGH + LOW) - 0.125) - 20
     }
 
-    //% blockId=hetao_sonar_temperature_humidity block="读取引脚 %pin| %attr|"
+    //% blockId=hetao_sonar_temperature_humidity block="读取 %attr|"
     //% group="温湿度传感器"
-    export function readTemperatureAndHumiditySensor(pin: DigitalPin, attr: HetaoTemperatureHumidity) {
+    export function readTemperatureAndHumiditySensor(attr: HetaoTemperatureHumidity) {
         pins.i2cWriteNumber(68, 11270, NumberFormat.UInt16BE, true)
         basic.pause(10)
         let buf = pins.i2cReadBuffer(0x44, 6)
