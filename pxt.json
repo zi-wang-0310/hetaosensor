@@ -10,7 +10,6 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "main.py",
         "sensor.ts"
     ],
     "testFiles": [
