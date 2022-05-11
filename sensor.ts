@@ -10,11 +10,24 @@ enum HetaoSoundIndex {
     //% block="3"
     three,
     //% block="4"
-    fore,
+    four,
     //% block="5"
     five,
     //% block="6"
     six
+}
+
+enum HetaoSoundVolume {
+    //% block="20%"
+    one = 1,
+    //% block="40%"
+    two,
+    //% block="60%"
+    three,
+    //% block="80%"
+    four,
+    //% block="100%"
+    five,
 }
 
 enum HetaoPingUnit {
@@ -38,7 +51,7 @@ enum HetaoTemperatureHumidity {
 namespace HetaoSensor {
 
     //% blockId="hetao_sensor_volume" block="读取声音强度"
-    //% weight=85 blockGap=8
+    //% weight=95 blockGap=8
     //% group="音频模块"
     export function volume(): number {
         pins.i2cWriteNumber(10, 0, NumberFormat.UInt8LE, true)
@@ -46,8 +59,18 @@ namespace HetaoSensor {
         return vol
     }
 
-    //% blockId="hetao_sensor_play_sound" block="播放第%id|号录音"
+    //% blockId="hetao_sensor_set_volume" block="设置声音强度%vol|"
     //% weight=85 blockGap=8
+    //% group="音频模块"
+    export function setVolume(vol: HetaoSoundVolume): number {
+        let num = 0x0300
+        num += vol
+        pins.i2cWriteNumber(10, num, NumberFormat.UInt8LE, false)
+        return vol
+    }
+
+    //% blockId="hetao_sensor_play_sound" block="播放第%id|号录音"
+    //% weight=65 blockGap=8
     //% group="音频模块"
     export function playSound(id: HetaoSoundIndex) {
         let num = 0x0200
@@ -56,11 +79,19 @@ namespace HetaoSensor {
     }
 
     //% blockId="hetao_sensor_record_sound" block="录制第%id|号录音"
-    //% weight=85 blockGap=8
+    //% weight=80 blockGap=8
     //% group="音频模块"
     export function recordSound(id: HetaoSoundIndex) {
         let num = 0x0100
         num += id
+        pins.i2cWriteNumber(10, num, NumberFormat.UInt16BE, false)
+    }
+
+    //% blockId="hetao_sensor_stop_record_sound" block="停止录音"
+    //% weight=75 blockGap=8
+    //% group="音频模块"
+    export function stopRecordSound() {
+        let num = 0x0100
         pins.i2cWriteNumber(10, num, NumberFormat.UInt16BE, false)
     }
 
