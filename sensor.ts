@@ -62,11 +62,10 @@ namespace HetaoSensor {
     //% blockId="hetao_sensor_set_volume" block="设置声音强度%vol|"
     //% weight=85 blockGap=8
     //% group="音频模块"
-    export function setVolume(vol: HetaoSoundVolume): number {
+    export function setVolume(vol: HetaoSoundVolume) {
         let num = 0x0300
         num += vol
         pins.i2cWriteNumber(10, num, NumberFormat.UInt8LE, false)
-        return vol
     }
 
     //% blockId="hetao_sensor_play_sound" block="播放第%id|号录音"
