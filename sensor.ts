@@ -18,16 +18,16 @@ enum HetaoSoundIndex {
 }
 
 enum HetaoSoundVolume {
+    //% block="100%"
+    five = 5,
+    //% block="80%"
+    four = 4,
+    //% block="60%"
+    three = 3,
+    //% block="40%"
+    two = 2,
     //% block="20%"
     one = 1,
-    //% block="40%"
-    two,
-    //% block="60%"
-    three,
-    //% block="80%"
-    four,
-    //% block="100%"
-    five,
 }
 
 enum HetaoPingUnit {
