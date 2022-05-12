@@ -65,7 +65,7 @@ namespace HetaoSensor {
     export function setVolume(vol: HetaoSoundVolume) {
         let num = 0x0300
         num += vol
-        pins.i2cWriteNumber(10, num, NumberFormat.UInt8LE, false)
+        pins.i2cWriteNumber(10, num, NumberFormat.UInt16BE, false)
     }
 
     //% blockId="hetao_sensor_play_sound" block="播放第%id|号录音"
