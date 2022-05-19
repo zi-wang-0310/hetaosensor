@@ -155,7 +155,7 @@ namespace HetaoSensor {
     export function readTemperature(): number {
         if (!PWMInited)
             return 0
-        return 280 * (HIGH / (HIGH + LOW) - 0.125) - 20
+        return 280 * (HIGH / (HIGH + LOW)) - 53.4
     }
 
     //% blockId=hetao_sonar_temperature_humidity block="读取 %attr|"
